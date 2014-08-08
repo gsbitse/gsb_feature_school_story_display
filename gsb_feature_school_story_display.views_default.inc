@@ -148,6 +148,7 @@ function gsb_feature_school_story_display_views_default_views() {
   $handler->display->display_options['bundles'] = array(
     0 => 'faculty',
   );
+  $handler->display->display_options['show_title'] = 1;
   $export['gsb_school_news'] = $view;
 
   return $export;
