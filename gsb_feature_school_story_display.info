@@ -1,0 +1,11 @@
+name = GSB Feature School Story Display
+core = 7.x
+package = GSB
+version = 7.x-1.0
+project = gsb_feature_school_story_display
+dependencies[] = eva
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = gsb_school_news
+features_exclude[dependencies][ctools] = ctools
