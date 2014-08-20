@@ -23,6 +23,7 @@ function gsb_feature_school_story_display_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'School News';
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -149,6 +150,139 @@ function gsb_feature_school_story_display_views_default_views() {
     0 => 'faculty',
   );
   $handler->display->display_options['show_title'] = 1;
+
+  /* Display: EVA Field Form */
+  $handler = $view->new_display('entity_view', 'EVA Field Form', 'entity_field_form');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'EVA Field Form';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_date' => 'field_date',
+    'field_icon' => 'field_icon',
+    'title' => 'title',
+    'field_editorial_summary' => 'field_editorial_summary',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_date' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_icon' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_editorial_summary' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: GSB: Modal node add link */
+  $handler->display->display_options['header']['gsb_node_modal_add_link']['id'] = 'gsb_node_modal_add_link';
+  $handler->display->display_options['header']['gsb_node_modal_add_link']['table'] = 'gsb__global';
+  $handler->display->display_options['header']['gsb_node_modal_add_link']['field'] = 'gsb_node_modal_add_link';
+  $handler->display->display_options['header']['gsb_node_modal_add_link']['bundle'] = 'announcement';
+  $handler->display->display_options['header']['gsb_node_modal_add_link']['text'] = 'Create an announcement';
+  /* Header: GSB: Modal node add link */
+  $handler->display->display_options['header']['gsb_node_modal_add_link_1']['id'] = 'gsb_node_modal_add_link_1';
+  $handler->display->display_options['header']['gsb_node_modal_add_link_1']['table'] = 'gsb__global';
+  $handler->display->display_options['header']['gsb_node_modal_add_link_1']['field'] = 'gsb_node_modal_add_link';
+  $handler->display->display_options['header']['gsb_node_modal_add_link_1']['bundle'] = 'school_story';
+  $handler->display->display_options['header']['gsb_node_modal_add_link_1']['text'] = 'Create a school story';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Unfiltered text */
+  $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area_text_custom']['content'] = 'There are no School News for this faculty.';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[field_icon][title]';
+  $handler->display->display_options['fields']['title']['alter']['path'] = '[field_link_single]';
+  $handler->display->display_options['fields']['title']['alter']['target'] = '_blank';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Source Publication Date */
+  $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_date']['settings'] = array(
+    'format_type' => 'panopoly_day',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_repeat_rule' => 'show',
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Field: Display on Profile */
+  $handler->display->display_options['fields']['field_profile_visibility']['id'] = 'field_profile_visibility';
+  $handler->display->display_options['fields']['field_profile_visibility']['table'] = 'field_data_field_profile_visibility';
+  $handler->display->display_options['fields']['field_profile_visibility']['field'] = 'field_profile_visibility';
+  $handler->display->display_options['fields']['field_profile_visibility']['relationship'] = 'field_related_faculty_value';
+  $handler->display->display_options['fields']['field_profile_visibility']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Content: Edit link (in modal) */
+  $handler->display->display_options['fields']['edit_node_modal']['id'] = 'edit_node_modal';
+  $handler->display->display_options['fields']['edit_node_modal']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node_modal']['field'] = 'edit_node_modal';
+  $handler->display->display_options['fields']['edit_node_modal']['label'] = '';
+  $handler->display->display_options['fields']['edit_node_modal']['element_label_colon'] = FALSE;
+  /* Field: Content: Delete link (in modal) */
+  $handler->display->display_options['fields']['delete_node_modal']['id'] = 'delete_node_modal';
+  $handler->display->display_options['fields']['delete_node_modal']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['delete_node_modal']['field'] = 'delete_node_modal';
+  $handler->display->display_options['fields']['delete_node_modal']['label'] = '';
+  $handler->display->display_options['fields']['delete_node_modal']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Source Publication Date (field_date) */
+  $handler->display->display_options['sorts']['field_date_value']['id'] = 'field_date_value';
+  $handler->display->display_options['sorts']['field_date_value']['table'] = 'field_data_field_date';
+  $handler->display->display_options['sorts']['field_date_value']['field'] = 'field_date_value';
+  $handler->display->display_options['sorts']['field_date_value']['order'] = 'DESC';
+  $handler->display->display_options['entity_type'] = 'node';
+  $handler->display->display_options['bundles'] = array(
+    0 => 'faculty',
+  );
+  $handler->display->display_options['show_on'] = 'form';
   $export['gsb_school_news'] = $view;
 
   return $export;
